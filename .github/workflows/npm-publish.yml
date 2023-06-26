@@ -1,0 +1,30 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+          
+      - name: Configure CI Git User
+        run: |
+          git config --global user.email protontechvn@gmail.com
+          git config --global user.name 'GitHub Actions'
+
+      - run: |
+          yarn clean
+          npx lerna bootstrap --ignore @galaxy-ultra/ui
+          npx lerna run --parallel build --ignore @galaxy-ultra/ui
+          npx lerna bootstrap
+          npx lerna version patch --yes
+          npx lerna --scope @galaxy-ultra/ui run build
+      - run: npx lerna publish patch --yes --no-push --force-publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

@@ -1,0 +1,5 @@
+packages/*/lib
+node_modules
+packages/stories/node_modules
+
+.vscode
