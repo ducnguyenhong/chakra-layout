@@ -1,16 +1,18 @@
-## `Galaxy Ultra Button`
+## `VND UI Button`
 
-> A UI library for React built with TailwindCSS
+> A UI library for React built with Chakra UI
 
 ### Install
 
-`npm i @galaxy-ultra/button`
+`npm i @vnd-test/button`
 or
-`yarn add @galaxy-ultra/button`
+`yarn add @vnd-test/button`
 
 ### Usage
 ```
-import Button from @galaxy-ultra/button
+import { Button } from @vnd-test/button
+
+<Button/>
 ```
 ### Documentation
-See full docs at https://galaxyultra.net
+See full docs at 

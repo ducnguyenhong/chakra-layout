@@ -2,6 +2,6 @@
 
 const ui = require('..');
 
-describe('@galaxy-ultra/ui', () => {
+describe('@vnd-test/react', () => {
   it('needs tests');
 });
